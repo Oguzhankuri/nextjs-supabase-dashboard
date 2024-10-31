@@ -1,6 +1,4 @@
-// It is recommended to read up on IETF Language Codes.
-// If you're using a language detector, do not define the lng option
-// https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes
+import { useTrans } from '@/hooks/i18next'
 export const defaultLng: string = 'en'
 
 export const fallbackLng: string = 'ko'
@@ -59,3 +57,19 @@ export const countries: Country[] = [
     languages: ['ko'],
   },
 ]
+const { trans } = useTrans()
+
+export default function App() {
+  return (
+    <div>
+    {trans('key', { 
+      components: {
+        i: <i />,
+        link1: <Link href="#"/>,
+      },
+      values: { what: 'world' }
+    })}
+    </div>
+  )
+}
+
